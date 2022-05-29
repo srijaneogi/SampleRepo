@@ -29,6 +29,7 @@ jobs:
     - name: Send greeting
       env: 
         reponame: ${{ github.event.repository.name }}
-      run: 
+      run: |
         echo "Hello from ${{ github.event.repository.name }}"
         echo "Repository name is = $reponame"
+        curl -L GET "http://www.google.com"
