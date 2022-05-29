@@ -1,6 +1,6 @@
 # This is a basic workflow that is manually triggered
 
-name: Manual workflow
+name: Manual workflow Repo Name
 
 # Controls when the action will run. Workflow runs when manually triggered using the UI
 # or API.
@@ -27,4 +27,8 @@ jobs:
     steps:
     # Runs a single command using the runners shell
     - name: Send greeting
-      run: echo "Hello from ${{ github.event.repository.name }}"
+      env: 
+        reponame: ${{ github.event.repository.name }}
+      run: 
+        echo "Hello from ${{ github.event.repository.name }}"
+        echo "Repository name is = $reponame"
