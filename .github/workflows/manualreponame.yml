@@ -31,5 +31,5 @@ jobs:
         reponame: ${{ github.event.repository.name }}
       run: |
         echo "Hello from ${{ github.event.repository.name }}"
-        echo "Repository name is = $reponame"
+        echo "Repository name is = ${reponame}"
         curl -L GET "http://www.google.com"
