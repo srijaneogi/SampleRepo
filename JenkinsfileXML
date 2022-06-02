@@ -7,7 +7,7 @@ pipeline {
                 script {
                   def props = readFile(file: "books.xml")
                   echo "$props"
-                  def xml = new XmlSlurper().parseText(props).catalog.book[0].title[0]
+                  def xml = new XmlSlurper().parseText(props).catalog.book.title
                   echo "Printing xml"
                   echo "$xml"
                   def env = xml.catalog.book.title
