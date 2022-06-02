@@ -10,7 +10,7 @@ pipeline {
                   def xml = new XmlSlurper().parseText(props)
                   def env = xml.catalog.title[1].title[0]
 
-                  echo "${env}"
+                  echo "variable fetached= ${env}"
                 }
             }
         }
