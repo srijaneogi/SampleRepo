@@ -8,7 +8,7 @@ pipeline {
                   def props = readFile(file: "books.xml")
                   echo "$props"
                   def xml = new XmlSlurper().parseText(props)
-                  def env = xml.catalog.title[1].title[0]
+                  def env = xml.catalog.title[1]
 
                   echo "variable fetached= ${env}"
                 }
