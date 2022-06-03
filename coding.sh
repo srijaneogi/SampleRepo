@@ -2,8 +2,8 @@
 temp=$#
 if [ -s "$temp" ]
 then
-	echo "File exists"
+	echo "File exists in directory"
 else
-	echo "File not found in inventory"
+	echo "File not found"
 fi	
 sh temp.sh path/test.txt
