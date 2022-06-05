@@ -1,1 +1,30 @@
 ['url1:branch1', 'url2:branch2']
+pipeline {
+      agent any
+      stages {
+          stage('Check Environment') {
+              when {
+                  expression { return params.current_status == "closed" && params.merged == true }
+              }
+              steps {
+                  build 'Environment Check'
+              }
+          }
+          stage('Download Private Repo') {
+              when {
+                  expression { return params.current_status == "closed" && params.merged == true }
+              }
+              steps {
+                  build 'Download Private Repo'
+              }
+          }
+          stage('Generate Public Folder') {
+              when {
+                  expression { return params.current_status == "closed" && params.merged == true }
+              }
+              steps {
+                  build 'Generate Public Folder'
+              }
+          }
+      }
+  }
