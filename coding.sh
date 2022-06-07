@@ -2,7 +2,7 @@
 temp=$#
 if [ -s "$temp" ]
 then
-	echo "File exist"
+	echo "File exist in"
 else
 	echo "File not present"
 fi	
