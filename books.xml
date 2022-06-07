@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <catalog>
    <book id="bk101">
-      <author>Gambardella, Matthew</author>
+      <author>Gambardella,</author>
       <title>XML Developer's Guide</title>
       <genre>Computer</genre>
       <price>449</price>
@@ -10,12 +10,12 @@
       with XML.</description>
    </book>
    <book id="bk106">
-      <author>Randall, Cynthia</author>
+      <author>Randall</author>
       <title>Lover Birds</title>
       <genre>Romance</genre>
       <price>4.95</price>
       <publish_date>2000-09-02</publish_date>
-      <description>When Carla meets Paul at an ornithology 
+      <description>Whenaul at an ornithology 
       conference, tempers fly as feathers get ruffled.</description>
    </book>
    <book id="bk107">
