@@ -16,15 +16,9 @@ node {
  ])
 
  stage("build") {
-  sh '''
-  echo Variables from shell:
-  echo reference $reference
-  echo before $before
-  echo requestWithNumber $requestWithNumber
-  echo requestWithString $requestWithString
-  echo headerWithNumber $headerWithNumber
-  echo headerWithString $headerWithString
-  echo X_GitHub_Event $X_GitHub_Event
-  '''
- }
+  printContributedVariables: true,
+              printPostContent: true,
+              silentResponse: false,
+              regexpFilterText: '$action#$merged,
+              regexpFilterExpression: ‘closed#true'
 }
