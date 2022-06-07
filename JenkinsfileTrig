@@ -5,7 +5,7 @@ node {
     genericVariables: [
      genericVariables: [
       [key: 'mergedtobranch', value: '$.pull_request.base.ref'],
-      [key: ‘merged, value: '$.pull_request.merged]
+      [key: 'merged', value: '$.pull_request.merged]
     ]
     
     printContributedVariables: true,
