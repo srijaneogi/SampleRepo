@@ -1,0 +1,19 @@
+node {
+ properties([
+  pipelineTriggers([
+   [$class: 'GenericTrigger',
+    genericVariables: [
+     [key: 'mergedtobranch', value: '$.pull_request.base.ref'],
+     [key: 'merged', value: '$.pull_request.merged']
+    ],
+   ]
+  ])
+ ])
+
+ stage("build") {
+
+  echo "Variables from shell:"
+  echo "reference $mergedtobranch"
+
+ }
+}
