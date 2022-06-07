@@ -3,10 +3,10 @@ node {
   pipelineTriggers([
    [$class: 'GenericTrigger',
     genericVariables: [
-     [key: 'reference', value: '$.ref'],
+     [key: 'reference', value: '$ref'],
      [
       key: 'before',
-      value: '$.before',
+      value: '$before',
       expressionType: 'JSONPath', //Optional, defaults to JSONPath
       regexpFilter: '', //Optional, defaults to empty string
       defaultValue: '' //Optional, defaults to empty string
