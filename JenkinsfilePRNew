@@ -28,11 +28,12 @@ node {
    ]
   ])
  ])
-
+printContributedVariables: true,
+    printPostContent: true,
  stage("build") {
   echo "from shell"
   echo "reference reference"
-  echo before "$before"
+  echo before $before
   echo requestWithNumber "$requestWithNumber"
   echo requestWithString "$requestWithString"
   echo headerWithNumber "$headerWithNumber"
