@@ -11,10 +11,9 @@ node {
  ])
 
  stage("build") {
-  sh '''
-  echo Variables from shell:
-  echo reference $mergedtobranch
-  echo before $merged
-  '''
+
+  echo "Variables from shell:"
+  echo "reference $mergedtobranch"
+
  }
 }
