@@ -2,7 +2,7 @@
 temp=$#
 if [ -s "$temp" ]
 then
-	echo "File present"
+	echo "File present in folders"
 else
 	echo "File not present"
 fi	
