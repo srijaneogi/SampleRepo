@@ -25,11 +25,11 @@ node {
     printPostContent: true,
     regexpFilterText: '',
     regexpFilterExpression: ''
-   ]
+   ],
   ])
  ])
 printContributedVariables: true,
-    printPostContent: true,
+printPostContent: true
  stage("build") {
   echo "from shell"
   echo "reference reference"
