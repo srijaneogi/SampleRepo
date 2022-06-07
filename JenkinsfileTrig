@@ -1,0 +1,31 @@
+node {
+ properties([
+  pipelineTriggers([
+   [$class: 'GenericTrigger',
+    genericVariables: [
+     genericVariables: [
+      [key: 'mergedtobranch', value: '$.pull_request.base.ref'],
+      [key: ‘merged, value: '$.pull_request.merged]
+    ]
+    
+    printContributedVariables: true,
+    printPostContent: true,
+    regexpFilterText: '',
+    regexpFilterExpression: ''
+   ]
+  ])
+ ])
+
+ stage("build") {
+  sh '''
+  echo Variables from shell:
+  echo reference $reference
+  echo before $before
+  echo requestWithNumber $requestWithNumber
+  echo requestWithString $requestWithString
+  echo headerWithNumber $headerWithNumber
+  echo headerWithString $headerWithString
+  echo X_GitHub_Event $X_GitHub_Event
+  '''
+ }
+}
