@@ -21,4 +21,5 @@ node {
               silentResponse: false,
               regexpFilterText: '$action#$merged,
               regexpFilterExpression: ‘closed#true'
+   }
 }
