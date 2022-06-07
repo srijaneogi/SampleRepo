@@ -30,8 +30,7 @@ node {
  ])
 
  stage("build") {
-  
-  echo Variables from shell:
+  ech from shell:
   echo reference $reference
   echo before $before
   echo requestWithNumber $requestWithNumber
