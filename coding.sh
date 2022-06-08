@@ -6,5 +6,5 @@ then
 else
 	echo "File not present"
 fi	
-
+dddd
 sh temp.sh path/test.txt
