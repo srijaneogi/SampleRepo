@@ -7,6 +7,12 @@ pipeline {
                   echo "Hello"
                   def props = readFile(file: "resources/sonar-proj.properties")
                   echo "$props"
+                  
+                  if (fileExists('resources/sonar-proj.propert')) {
+                    echo 'Yes'
+                  } else {
+                    echo 'No'
+                  }
                 }
             }
         }
