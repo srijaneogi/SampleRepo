@@ -1,0 +1,14 @@
+pipeline {
+    agent any
+    stages {
+        stage('Hello') {
+            steps {
+                script {
+                  echo "Hello"
+                  def props = readFile(file: "resources/sonar-proj.properties")
+                  echo "$props"
+                }
+            }
+        }
+    }
+}
