@@ -1,0 +1,34 @@
+pipeline {
+    agent any
+    
+    stages {
+        // when { expression { currentBuild.getBuildCauses('hudson.model.Cause$UserIdCause').userId[0] != "srija" } }
+        // stage ("defination"){
+        //     steps{
+        //         script {
+        //             def specificCause = currentBuild.getBuildCauses('hudson.model.Cause$UserIdCause')
+        //         }
+        //     }
+        // }
+        stage ("Authorize Usage") {
+          when { 
+              expression { currentBuild.getBuildCauses('hudson.model.Cause$UserIdCause').userId[0] != "srija" } 
+              branch 'dev'
+          }
+            steps {
+                script {
+                    specificCause = currentBuild.getBuildCauses('hudson.model.Cause$UserIdCause')
+                    echo "build cause::1:::${currentBuild.buildCauses}"
+                    echo "build cause2:::::${currentBuild.getBuildCauses('jenkins.branch.BranchEventCause')}"
+                    def causes = currentBuild.rawBuild.getCauses()
+                    echo "specificCause: $specificCause.userName"
+                    echo "specificCause: ${specificCause.userId[0]}"
+                    echo "specificCause: $specificCause"
+                    echo "CAUSE:::::: $causes"
+                    currentBuild.description = 'Aborting Build due to manual start - thats not permitted!'
+                    error('Aborting Build due to manual start - thats not permitted!')
+                }
+            }
+        }
+    }
+}
