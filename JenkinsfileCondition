@@ -11,12 +11,14 @@ pipeline {
         //     }
         // }
         stage ("Authorize Usage") {
-          when { 
+          when {
+              branch 'qat'
               expression { currentBuild.getBuildCauses('hudson.model.Cause$UserIdCause').userId[0] != "srija" } 
-              branch 'dev'
+              
           }
             steps {
                 script {
+                    echo "userid[0]::::: ${currentBuild.getBuildCauses('hudson.model.Cause$UserIdCause').userId[0]}"
                     specificCause = currentBuild.getBuildCauses('hudson.model.Cause$UserIdCause')
                     echo "build cause::1:::${currentBuild.buildCauses}"
                     echo "build cause2:::::${currentBuild.getBuildCauses('jenkins.branch.BranchEventCause')}"
