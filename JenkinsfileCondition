@@ -12,7 +12,7 @@ pipeline {
         // }
         stage ("Authorize Usage") {
           when {
-              branch 'qat'
+              branch 'dev'
               expression { currentBuild.getBuildCauses('hudson.model.Cause$UserIdCause').userId[0] != "srija" } 
               
           }
