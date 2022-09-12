@@ -25,7 +25,7 @@ pipeline {
                     println('Build Cause 2 : '+currentBuild.getBuildCauses('jenkins.branch.BranchEventCause'))
                     event = currentBuild.getBuildCauses('jenkins.branch.BranchEventCause')
                     echo "branch event=event$event"
-                    if (currentBuild.getBuildCauses('jenkins.branch.BranchEventCause')) {
+                    if (!currentBuild.getBuildCauses('jenkins.branch.BranchEventCause')) {
                         echo "yes...event"
                     } 
                     if ("${currentBuild.getBuildCauses('hudson.model.Cause$UserIdCause').userId[0]}" != null) {
