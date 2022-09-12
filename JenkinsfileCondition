@@ -40,7 +40,7 @@ pipeline {
                     echo "specificCause: $specificCause"
                     echo "CAUSE:::::: $causes"
                     currentBuild.description = 'Aborting Build due to manual start - thats not permitted!'
-                    error('Aborting Build due to manual start - thats not permitted!')
+                    //error('Aborting Build due to manual start - thats not permitted!')
                 }
             }
         }
@@ -49,10 +49,8 @@ pipeline {
                 script {
                     echo 'Hello World'
                     currentBuild.result = 'ABORTED'
-                        error("here is aborted")
+                    error("here is aborted")
                     continueBuild = false
-                        
-    
                 }
             }
         }
