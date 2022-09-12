@@ -47,6 +47,8 @@ pipeline {
         stage('Hello') {
             steps {
                 echo 'Hello World'
+                currentBuild.result = 'ABORTED'
+                echo "here is aborted"
             }
         }
         stage('Hello2') {
