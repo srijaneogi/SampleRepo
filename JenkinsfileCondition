@@ -2,7 +2,6 @@ pipeline {
     agent any
    
     stages {
-    try {
         // when { expression { currentBuild.getBuildCauses('hudson.model.Cause$UserIdCause').userId[0] != "srija" } }
         // stage ("defination"){
         //     steps{
@@ -60,9 +59,5 @@ pipeline {
                 echo 'Hello World33333'
             }
         }
-    }
-    catch(all) {
-        currentBuild.result = 'ABORTED'
-    }
     }
 }
