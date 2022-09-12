@@ -32,7 +32,7 @@ pipeline {
                         echo "yes...user"
                     }
                     if (env.BRANCH_NAME =~ "dev") {
-                        echo "env.BRANCH_NAME"
+                        echo "${env.BRANCH_NAME}"
                     }
                     def causes = currentBuild.rawBuild.getCauses()
                     echo "specificCause: $specificCause.userName"
