@@ -50,7 +50,7 @@ pipeline {
                     echo 'Hello World'
                     currentBuild.result = 'ABORTED'
                     //error("here is aborted")
-                    //continueBuild = false
+                    continueBuild = false
                 }
             }
         }
