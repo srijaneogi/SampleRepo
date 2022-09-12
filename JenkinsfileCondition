@@ -22,6 +22,10 @@ pipeline {
                     specificCause = currentBuild.getBuildCauses('hudson.model.Cause$UserIdCause')
                     echo "build cause::1:::${currentBuild.buildCauses}"
                     echo "build cause2:::::${currentBuild.getBuildCauses('jenkins.branch.BranchEventCause')}"
+                    println('Build Cause 2 : '+currentBuild.getBuildCauses('jenkins.branch.BranchEventCause'))
+                    event = currentBuild.getBuildCauses('jenkins.branch.BranchEventCause')
+                    echo "branch event=event$event"
+                    if ("${currentBuild.getBuildCauses('jenkins.branch.BranchEventCause')}" )
                     def causes = currentBuild.rawBuild.getCauses()
                     echo "specificCause: $specificCause.userName"
                     echo "specificCause: ${specificCause.userId[0]}"
