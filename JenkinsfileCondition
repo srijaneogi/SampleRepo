@@ -48,10 +48,11 @@ pipeline {
             steps {
                 script {
                     echo 'Hello World'
-                    if (!continueBuild) {
-                        currentBuild.result = 'ABORTED'
+                    currentBuild.result = 'ABORTED'
                         error("here is aborted")
-                    }
+                    //if (!continueBuild) {
+                        
+                    //}
                 }
             }
         }
