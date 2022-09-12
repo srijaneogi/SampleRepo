@@ -1,7 +1,7 @@
-node {
-    //agent any
+pipeline {
+    agent any
    
-    //stages {
+    stages {
         // when { expression { currentBuild.getBuildCauses('hudson.model.Cause$UserIdCause').userId[0] != "srija" } }
         // stage ("defination"){
         //     steps{
@@ -22,6 +22,9 @@ node {
                     specificCause = currentBuild.getBuildCauses('hudson.model.Cause$UserIdCause')
                     echo "build cause::1:::${currentBuild.buildCauses}"
                     echo "build cause2:::::${currentBuild.getBuildCauses('jenkins.branch.BranchEventCause')}"
+                    def a = currentBuild.getBuildCauses('jenkins.branch.BranchEventCause')
+                    
+                    println(a.length())
                     println('Build Cause 2 : '+currentBuild.getBuildCauses('jenkins.branch.BranchEventCause'))
                     event = currentBuild.getBuildCauses('jenkins.branch.BranchEventCause')
                     echo "branch event=event$event"
@@ -59,5 +62,5 @@ node {
                 echo 'Hello World33333'
             }
         }
-    //}
+    }
 }
