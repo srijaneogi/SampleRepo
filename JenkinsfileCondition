@@ -31,7 +31,7 @@ pipeline {
                     if ("${currentBuild.getBuildCauses('hudson.model.Cause$UserIdCause').userId[0]}" != null) {
                         echo "yes...user"
                     }
-                    if (env.BRANCH_NAME =~ dev) {
+                    if (env.BRANCH_NAME =~ "dev") {
                         echo "env.BRANCH_NAME"
                     }
                     def causes = currentBuild.rawBuild.getCauses()
