@@ -25,7 +25,9 @@ pipeline {
                     println('Build Cause 2 : '+currentBuild.getBuildCauses('jenkins.branch.BranchEventCause'))
                     event = currentBuild.getBuildCauses('jenkins.branch.BranchEventCause')
                     echo "branch event=event$event"
-                    
+                    if ("${currentBuild.getBuildCauses('jenkins.branch.BranchEventCause')}" == null) {
+                        echo "yes..."
+                    } 
                     
                     def causes = currentBuild.rawBuild.getCauses()
                     echo "specificCause: $specificCause.userName"
