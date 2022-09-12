@@ -1,7 +1,8 @@
 pipeline {
     agent any
-    try { 
+   
     stages {
+    try {
         // when { expression { currentBuild.getBuildCauses('hudson.model.Cause$UserIdCause').userId[0] != "srija" } }
         // stage ("defination"){
         //     steps{
