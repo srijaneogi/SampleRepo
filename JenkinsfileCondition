@@ -48,7 +48,7 @@ pipeline {
             steps {
                 script {
                     echo 'Hello World'
-                    currentBuild.result = 'ABORTED'
+                    //currentBuild.result = 'ABORTED'
                     error("here is aborted")
                     continueBuild = false
                 }
@@ -59,6 +59,7 @@ pipeline {
                 echo 'Hello World33333'
             }
         }
+    }
     }
     catch(all) {
         currentBuild.result = 'ABORTED'
