@@ -1,8 +1,7 @@
 pipeline {
     agent any
-   
+    
     stages {
-        // when { expression { currentBuild.getBuildCauses('hudson.model.Cause$UserIdCause').userId[0] != "srija" } }
         // stage ("defination"){
         //     steps{
         //         script {
@@ -11,55 +10,25 @@ pipeline {
         //     }
         // }
         stage ("Authorize Usage") {
-          when {
-              branch 'dev'
-              expression { currentBuild.getBuildCauses('hudson.model.Cause$UserIdCause').userId[0] == "srija" } 
-              
-          }
+          when { expression { currentBuild.getBuildCauses('hudson.model.Cause$UserIdCause').userId[0] == "srija" } }
             steps {
                 script {
-                    echo "userid[0]::::: ${currentBuild.getBuildCauses('hudson.model.Cause$UserIdCause').userId[0]}"
                     specificCause = currentBuild.getBuildCauses('hudson.model.Cause$UserIdCause')
                     echo "build cause::1:::${currentBuild.buildCauses}"
                     echo "build cause2:::::${currentBuild.getBuildCauses('jenkins.branch.BranchEventCause')}"
-                    def a = currentBuild.getBuildCauses('jenkins.branch.BranchEventCause')
+                    def causes = currentBuild.rawBuild.getCauses()
+					
+					def a = currentBuild.getBuildCauses('jenkins.branch.BranchEventCause')
                     
                     println('length::: '+a.length())
                     println('Build Cause 2 : '+currentBuild.getBuildCauses('jenkins.branch.BranchEventCause'))
-                    event = currentBuild.getBuildCauses('jenkins.branch.BranchEventCause')
-                    echo "branch event=event$event"
-                    if (!currentBuild.getBuildCauses('jenkins.branch.BranchEventCause')) {
-                        echo "yes...event"
-                    } 
-                    if ("${currentBuild.getBuildCauses('hudson.model.Cause$UserIdCause').userId[0]}" != null) {
-                        echo "yes...user"
-                    }
-                    if (env.BRANCH_NAME =~ "dev") {
-                        echo "${env.BRANCH_NAME}"
-                    }
-                    def causes = currentBuild.rawBuild.getCauses()
                     echo "specificCause: $specificCause.userName"
                     echo "specificCause: ${specificCause.userId[0]}"
                     echo "specificCause: $specificCause"
                     echo "CAUSE:::::: $causes"
                     currentBuild.description = 'Aborting Build due to manual start - thats not permitted!'
-                    //error('Aborting Build due to manual start - thats not permitted!')
+                    error('Aborting Build due to manual start - thats not permitted!')
                 }
-            }
-        }
-        stage('Hello') {
-            steps {
-                script {
-                    echo 'Hello World'
-                    currentBuild.result = 'ABORTED'
-                    error("here is aborted")
-                    continueBuild = false
-                }
-            }
-        }
-        stage('Hello2') {
-            steps {
-                echo 'Hello World33333'
             }
         }
     }
