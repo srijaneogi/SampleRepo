@@ -2,6 +2,6 @@
 def name1 = [
   name: "Jerry",
   age: 42,
-  city: "New York#.*@-_yyy"
+  city: "New York#"
  ]
 devops(name1)
