@@ -1,3 +1,7 @@
 @Library('sharedlib1') _
-def name1 = [name: "Jerry", age: 42, city: "New York#.*@-_yyy"]
+def name1 = [
+  name: "Jerry",
+  age: 42,
+  city: "New York#.*@-_yyy"
+ ]
 devops(name1)
