@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- a description of the JUnit XML format and how Jenkins parses it. See also junit.xsd -->
 
-<!-- if only a single testsuite element is present, the testsuites
+<!-- if only single testsuite element is present, the testsuites
      element can be omitted. All attributes are optional.
      Not supported by maven surefire.
  -->
