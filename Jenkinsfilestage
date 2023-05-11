@@ -1,3 +1,11 @@
+properties ([
+  parameters ([
+    choice(name: 'reg', choice: ['abc', 'xyz'], description: 'test params')
+  ])
+])
 @Library('sharedlib1') _
-def name1 = 'jenkinsjob 1'
-test1(name1)
+def l1 [
+  a: ${params.reg}
+]
+
+test1(a)
