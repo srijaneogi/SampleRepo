@@ -8,4 +8,4 @@ def l1 = [
   a: "${params.reg}"
   b: "some text"
 ]
-test1(a)
+param(a)
