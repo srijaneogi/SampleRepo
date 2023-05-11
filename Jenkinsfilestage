@@ -4,8 +4,8 @@ properties ([
   ])
 ])
 @Library('sharedlib1') _
-def l1 [
-  a: ${params.reg}
+def l1 = [
+  a: "${params.reg}"
+  b: "some text"
 ]
-
 test1(a)
