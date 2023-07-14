@@ -1,0 +1,47 @@
+name: Deploy to Amazon Secret Manager
+on:
+  workflow_dispatch:
+  schedule:
+    - cron:  '*/5 * * * *'
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      # User Validation check
+      - name: "User Validation"
+        env:
+          ActionAllowedUsers: ${{ secrets.ACTION_ALLOWED_USERS }}
+          actionUser: ${{ github.actor }}
+          run: |
+           #!/bin/sh
+
+            ECHO='echo '
+            for branch in $(git branch -a | sed 's/^\s*//' | sed 's/^remotes\///' | grep -v 'master$'); do
+              if [[ "$(git log $branch --since "6 months ago" | wc -l)" -eq 0 ]]; then
+                if [[ "$DRY_RUN" = "false" ]]; then
+                  ECHO=""
+                fi
+                local_branch_name=$(echo "$branch" | sed 's/remotes\/origin\///')
+                $ECHO git branch -d "${local_branch_name}"
+                $ECHO git push origin --delete "${local_branch_name}"
+              fi
+            done
+        # - name: Configure AWS credentials from Test account
+        #   env:
+        #     PROFILE_ARN: ${{ secrets.AWS_PROFILE_ARN }}
+        #     PROFILE_NAME: ${{ secrets.AWS_PROFILE_NAME }}
+        #     AWS_DEFAULT_REGION: 'ap-south-1'
+        #
+        #   uses: aws-actions/configure-aws-credentials@v1
+        #   with:
+        #     role-to-assume: $PROFILE_ARN/$PROFILE_NAME
+        #     aws-region: $AWS_DEFAULT_REGION
+        #
+        # - name: Upload secret file to aws secret manager
+        #   env:
+        #     file_name: ${{ secrets.SECRET_FILE_NAME }}
+        #     KMS_KEY: ${{ secrets.AWSSECRETKMS }}
+        #     run: |
+        #       aws secretsmanager create-secret --name production/DBCredentialsSecret --secret-string file://$file_name --kms-key-id $KMS_KEY
