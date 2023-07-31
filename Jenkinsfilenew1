@@ -5,11 +5,11 @@ node {
     
     properties([
       parameters([
-        string(name: 'serviceName', defaultValue: '', description: 'Please enter the serverless repository name'),
+        string(name: 'serviceName', defaultValue: 'SampleRepo', description: 'Please enter the serverless repository name'),
         
       ])
     ])
-    def serviceRepoUrl = "https://github.wm.com/esb/${params.serviceName}.git"
+    def serviceRepoUrl = "https://github.com/srijaneogi/${params.serviceName}.git"
     stage('Results') {
       echo "$serviceRepoUrl"
     }
